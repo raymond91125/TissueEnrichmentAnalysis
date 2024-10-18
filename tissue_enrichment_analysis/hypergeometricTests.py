@@ -243,7 +243,7 @@ def plot_enrichment_results(df, y='logq', title='', analysis='tissue',
     # make a logq bar:
     logq = -df['Q value'].apply(np.log10)
 
-    # added August 26 2016:
+    # added August 26 2016:  # added Oct 17, 2024 to limit GO label length
     tissue_ID = 11
     pheno_ID = 19
     go_ID = 10
@@ -253,7 +253,7 @@ def plot_enrichment_results(df, y='logq', title='', analysis='tissue',
     elif analysis == 'tissue':
         yvals = df.Term.str[:-tissue_ID-1]
     elif analysis == 'go':
-        yvals = df.Term.str[:-go_ID-1]
+        yvals = df.Term.str[:-go_ID-1].str[:73]
 
     # plot first n_bars
     with sns.axes_style('whitegrid'):
